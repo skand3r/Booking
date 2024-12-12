@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
+    <link rel="stylesheet" type="text/css" th:href="@{/styling/style.css}">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <h1>Booking</h1>
+        </div>
+        <nav>
+            <ul class="navbar">
+                <li><a href="/">Home</a></li>
+                <li><a href="hotel">Hotels</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons" th:if="${isAuthenticated}">
+            <span th:text="${username}" class="username"></span>
+            <a href="/logout" class="btn">Logout</a>
+        </div>
+        <div class="auth-buttons" th:if="${!isAuthenticated}">
+            <a href="/login" class="btn">Sign In</a>
+            <a href="/signup" class="btn btn-secondary">Sign Up</a>
+        </div>
+
+
+
+
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Discover Your Perfect Getaway</h2>
+                <p>Explore the best deals on hotels and destinations worldwide.</p>
+                <a href="hotel" class="cta">Start Searching</a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Booking. All rights reserved. | Designed by Skander Hamouda</p>
+    </footer>
+</body>
+
+</html>

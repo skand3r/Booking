@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
+    <link rel="stylesheet" type="text/css"  th:href="@{/styling/hotelstyle.css}">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <h1>Booking</h1>
+        </div>
+        <nav>
+            <ul class="navbar">
+                <li><a href="/">Home</a></li>
+                <li><a href="hotel">Hotels</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons" th:if="${isAuthenticated}">
+            <span th:text="${username}" class="username"></span>
+            <a href="/logout" class="btn">Logout</a>
+        </div>
+        <div class="auth-buttons" th:if="${!isAuthenticated}">
+            <a href="/login" class="btn">Sign In</a>
+            <a href="/signup" class="btn btn-secondary">Sign Up</a>
+        </div>
+    </header>
+    <main>
+        <!-- Hero Section: Includes heading, search bar, and background image -->
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Find Your Perfect Destination</h2>
+                <form action="/hotel/search/location" method="GET" class="search-form">
+                    <input type="text" placeholder="Enter your destination" name="location" required>
+                    <button type="submit" class="btn btn-search">Search</button>
+                    <button type="button" class="btn btn-search-all" onclick="window.location.href='/hotel/all'">Search All
+                        Hotels</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Booking. All rights reserved. | Designed by Skander Hamouda</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Hotels</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
+    <link rel="stylesheet" type="text/css" th:href="@{/styling/hotelresultsstyle.css}">
+</head>
+
+<body>
+<header>
+    <h1>Available Hotels</h1>
+</header>
+<main>
+    <a href="/hotel" class="btn btn-secondary return-btn">Return</a>
+    <div class="hotel-list">
+        <!-- Thymeleaf loop to render hotels -->
+        <div class="hotel-card" th:each="hotel : ${hotels}">
+            <img th:src="@{${hotel.imageUrl}}" alt="Hotel Image" class="hotel-image">
+            <div class="hotel-info">
+                <h3 th:text="${hotel.name}"></h3>
+                <p th:text="'Location: ' + ${hotel.location}"></p>
+            </div>
+        </div>
+    </div>
+</main>
+<footer>
+    <p>&copy; 2024 Booking. All rights reserved.</p>
+</footer>
+</body>
+
+</html>
