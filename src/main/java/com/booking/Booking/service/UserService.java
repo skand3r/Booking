@@ -3,6 +3,7 @@ package com.booking.Booking.service;
 import com.booking.Booking.model.User;
 import com.booking.Booking.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,13 +12,14 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    UserRepository userRepo;
-
+    private UserRepository userRepo;
+    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
     public List<User> getAllUsers(){
         return userRepo.findAll();
     }
 
     public void addUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepo.save(user);
     }
 
