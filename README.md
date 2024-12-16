@@ -6,16 +6,15 @@ This is a Spring project for a booking website where users can search for hotels
 
 - **Spring JPA**: Connected to a PostgreSQL database.
 - **Sign In and Sign Up Pages**: Basic user authentication with sessions managed using **Spring Security**.
-- **Embedded Hotel List**: Hotels are stored in a class as a list (not yet persisted in the database).
+- **PostgreSQL**: User and Hotel data are saved in a database.
 - **Search for Hotels**: Users can search for hotels by city or view all available hotels.
 - **Basic HTML/CSS Views**: Webpages are created using HTML and CSS (some external contributions).
 
 ## Features Yet to Be Done
 
-- Hash user passwords before saving them to the database.
-- Allow users to book different types of rooms in a hotel.
-- Add a booking management section where users can view, update, or cancel their bookings.
+- Add a booking system and a management section where users can view, update, or cancel their bookings.
 - Create UI for the above functions.
+- Allow users to book different types of rooms in a hotel.
 - Extend the project to support other types of bookings (e.g., plane tickets, concert tickets, etc.).
 
 ## Technologies Used
