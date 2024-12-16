@@ -20,9 +20,9 @@ public class HotelService {
         return hotelRepo.findAll();
     }
 
-    // get List of Hotels by Location
+
     public List<Hotel> searchHotelsByLocation(String location) {
-        return hotelRepo.findAll().stream().filter(hotel -> hotel.getLocation().equalsIgnoreCase(location)).toList();
+        return hotelRepo.findHotelByLocationIgnoreCase(location);
     }
 
 

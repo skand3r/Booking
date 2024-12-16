@@ -8,7 +8,7 @@ body {
 header {
     text-align: center;
     padding: 20px;
-    background-color: #333;
+    background-color: #007BFF;
     color: white;
 }
 
@@ -21,19 +21,20 @@ main {
 }
 
 .hotel-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
     padding: 20px;
 }
 
 .hotel-card {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    flex: 1 300px;
+    margin: 10px;
     background: white;
     border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    text-align: center;
 }
 
 .hotel-image {
@@ -43,7 +44,17 @@ main {
 }
 
 .hotel-info {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
     padding: 15px;
+}
+
+.left-items {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .hotel-info h3 {
@@ -56,6 +67,34 @@ main {
     margin: 0;
     font-size: 14px;
     color: #555;
+}
+
+.right-items {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
+.night {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
 }
 
 .btn.return-btn {
@@ -77,6 +116,8 @@ main {
     color: #007bff;
     border: 1px solid #007bff;
 }
+
+
 
 footer {
     text-align: center;

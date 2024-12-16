@@ -16,12 +16,17 @@
 <main>
     <a href="/hotel" class="btn btn-secondary return-btn">Return</a>
     <div class="hotel-list">
-        <!-- Thymeleaf loop to render hotels -->
         <div class="hotel-card" th:each="hotel : ${hotels}">
             <img th:src="@{'/hotel/' + ${hotel.id} + '/image'}" alt="Hotel Image" class="hotel-image">
             <div class="hotel-info">
+                <div class="left-items">
                 <h3 th:text="${hotel.name}"></h3>
-                <p th:text="'Location: ' + ${hotel.location}"></p>
+                <p th:text="'Location: ' + ${hotel.location}" class="location"></p>
+                </div>
+                <div class="right-items">
+                <p th:text="${hotel.getPricePerNight().intValue()} + '€/Night'" class="night"></p>
+                <a href="#" class="btn">Book</a>
+                </div>
             </div>
         </div>
     </div>
