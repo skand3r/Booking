@@ -18,7 +18,7 @@
     <div class="hotel-list">
         <!-- Thymeleaf loop to render hotels -->
         <div class="hotel-card" th:each="hotel : ${hotels}">
-            <img th:src="@{${hotel.imageUrl}}" alt="Hotel Image" class="hotel-image">
+            <img th:src="@{'/hotel/' + ${hotel.id} + '/image'}" alt="Hotel Image" class="hotel-image">
             <div class="hotel-info">
                 <h3 th:text="${hotel.name}"></h3>
                 <p th:text="'Location: ' + ${hotel.location}"></p>

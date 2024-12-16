@@ -1,6 +1,9 @@
 package com.booking.Booking.model;
 
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,10 +17,16 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Component
+@Entity
 public class Hotel {
+    @Id
     private Long id;
     private String name;
     private String location;
-    private List<Room> roomList = new ArrayList<>();
-    private String imageUrl;
+//    private List<Room> roomList = new ArrayList<>();
+//    private String imageName;
+//    private String imageType;
+    private Double pricePerNight;
+    @Lob
+    private byte[] imageData;
 }
