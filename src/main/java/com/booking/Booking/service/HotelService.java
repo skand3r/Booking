@@ -40,4 +40,8 @@ public class HotelService {
 
         return hotelRepo.save(hotel);
     }
+
+    public double calculateTotalPrice(Hotel hotel, int numberOfNights) {
+        return hotel.getPricePerNight() * numberOfNights;
+    }
 }

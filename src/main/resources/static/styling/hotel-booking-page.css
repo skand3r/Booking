@@ -1,0 +1,179 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure body fills the full viewport height */
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #007BFF;
+    color: white;
+}
+
+h1 {
+    margin: 0;
+}
+
+main {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hotel-card {
+    width: 100%;
+    max-width: 1100px;
+    min-height: 500px;
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.hotel-image {
+    flex: 1;
+    width: 100%;
+    max-width: 500px;
+    object-fit: cover;
+    align-items: flex-start;
+}
+
+.hotel-info {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.left-items {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    align-self: flex-start;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.left-items .hotel-name-location {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+}
+
+.left-items .price-per-night {
+    align-self: flex-end;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 42px;
+    color: #333;
+}
+
+
+.hotel-info h3 {
+    margin: 0 0 10px;
+    font-size: 30px;
+    color: #333;
+}
+
+.hotel-info p {
+    margin: 0;
+    font-size: 20px;
+    color: #555;
+}
+
+.right-items {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.nights-block{
+    margin-bottom: 20px;
+}
+
+#number-of-nights {
+    width: 70px;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #007BFF;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.total-and-book{
+    display: flex; /* Use Flexbox for horizontal alignment */
+    flex-direction: row; /* Align items in a row */
+    justify-content: space-between; /* Space between total and button */
+    align-items: center; /* Vertically center items */
+    width: 100%; /* Ensures it spans the full container width */
+    gap: 15px; /* Adds spacing between items */
+}
+
+.btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    color: #ffdd00;
+    border: 2px solid #ffdd00;
+}
+
+.button-container {
+    display: flex; /* Flexbox for alignment */
+    justify-content: flex-start; /* Align button to the left */
+    width: 100%; /* Match the width of the parent container */
+    max-width: 1100px; /* Match the width of the card */
+    margin: 0 auto; /* Center container if needed */
+    padding-top: 10px; /* Add spacing above the button */
+}
+
+.btn.return-btn {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #007bff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn.return-btn:hover {
+    background-color: white;
+    color: #007bff;
+    border: 1px solid #007bff;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    margin-top: 20px;
+}

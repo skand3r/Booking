@@ -68,6 +68,23 @@ public class HotelController {
     }
 
 
+    @GetMapping("hotel/{id}/book")
+    public String getHotelBookingPage(@PathVariable Long id, Model model) {
+        Hotel hotel = hotelService.findHotelById(id);
+        model.addAttribute("hotel", hotel);
+        return "hotel-booking-page";
+
+    }
+    @PostMapping("hotel/{id}/book")
+    public String bookHotel(@PathVariable Long id, @RequestParam int numberOfNights, Model model){
+        Hotel hotel = hotelService.findHotelById(id);
+        double totalPrice = hotelService.calculateTotalPrice(hotel, numberOfNights);
+        model.addAttribute("numberOfNights", numberOfNights);
+        return "hotelresults";
+
+    }
+
+
 
 
 

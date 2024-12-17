@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
+    <link rel="stylesheet" type="text/css" th:href="@{/styling/hotel-booking-page.css}">
+</head>
+
+<body>
+<header>
+    <h1>Available Hotels</h1>
+</header>
+<main>
+    <div class="hotel-card">
+        <img th:src="@{'/hotel/' + ${hotel.id} + '/image'}" alt="Hotel Image" class="hotel-image">
+        <div class="hotel-info">
+            <div class="left-items">
+                <div class="hotel-name-location">
+                    <h3 th:text="${hotel.name}"></h3>
+                    <p th:text="${hotel.location}" id="location"></p>
+                </div>
+                <div th:text="${hotel.getPricePerNight().intValue()} + '€/Night'" class="price-per-night"></div>
+            </div>
+            <div class="right-items" th:with="price=${hotel.getPricePerNight()}">
+                <div class="nights-block">
+                    <label for="number-of-nights"> Nights to stay: </label>
+                    <input id="number-of-nights" type="number" min="1" max="30" value="1"/>
+                </div>
+                <div class="total-and-book">
+                    <p id="total-price" th:text="'Total: ' + ${price} + '€'"></p>
+                    <a href="#" class="btn">Book</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="button-container">
+        <a href="/hotel/all" class="btn btn-secondary return-btn">Return</a>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const nightsInput = document.getElementById("number-of-nights");
+            const totalPriceElement = document.getElementById("total-price");
+
+            const pricePerNight = parseFloat([[${hotel.getPricePerNight()}]]);
+
+            nightsInput.addEventListener("input", function () {
+                const nights = parseInt(nightsInput.value) || 1;
+                const totalPrice = (pricePerNight * nights).toFixed(2);
+                totalPriceElement.textContent = `Total: ${totalPrice}€`;
+            });
+        });
+    </script>
+</main>
+<footer>
+    <p>&copy; 2024 Booking. All rights reserved.</p>
+</footer>
+</body>
+
+</html>
