@@ -8,19 +8,24 @@ This is a Spring project for a booking website where users can search for hotels
 - **Sign In and Sign Up Pages**: Basic user authentication with sessions managed using **Spring Security**.
 - **PostgreSQL**: User and Hotel data are saved in a database.
 - **Search for Hotels**: Users can search for hotels by city or view all available hotels.
-- **Basic HTML/CSS Views**: Webpages are created using HTML and CSS (some external contributions).
+- **Responsive UI**: clean, responsive layouts for webpages and booking interfaces using **HTML**, **CSS**, and **Flexbox**.
+## Technologies Used
+
+- **Java** with Spring Boot: Core backend development.
+- **Spring Framework**: For dependency injection, component management, and overall application structure.
+- **REST APIs**: Implemented for operations like adding hotels to the database using **JSON**.
+- **Spring JPA** For database interaction.
+- **Spring Security** For user authentication and session management.
+- **PostgreSQL**: Relational database for storing different data
+- **HTML/CSS** Frontend design and styling, with clean, responsive layouts for webpages using **Flexbox**
+- **Thymeleaf**: Used to dynamically render server-side data in the UI.
+- **Lombok**: Simplifies code with annotations.
 
 ## Features Yet to Be Done
 
-- Add a booking system and a management section where users can view, update, or cancel their bookings.
-- Create UI for the above functions.
-- Allow users to book different types of rooms in a hotel.
+- Implement a booking system
+- Create management sections for users to: view, update, cancel their bookings.
+- Allow users to book specific room types in a hotel.
 - Extend the project to support other types of bookings (e.g., plane tickets, concert tickets, etc.).
 
-## Technologies Used
 
-- **Java** with Spring Boot
-- **Spring JPA** for database interaction
-- **Spring Security** for user authentication and session management
-- **PostgreSQL** as the database
-- **HTML/CSS** for frontend design
