@@ -43,11 +43,18 @@
             </div>
             <div class="right-items" th:with="price=${hotel.getPricePerNight()}">
                 <div class="nights-block">
-                    <label for="number-of-nights"> Nights to stay: </label>
-                    <input id="number-of-nights" type="number" min="1" max="30" value="1"/>
+                    <div class="dates">
+                        <label for="start">Check in: </label>
+                        <input type="date" id="start" name="trip-start" value="2024-07-22" min="2024-01-01"
+                               max="2024-12-31"/>
+                        <label for="end">Check out: </label>
+                        <input type="date" id="end" name="trip-end" value="2024-07-22" min="2024-01-01"
+                               max="2024-12-31"/>
+                    </div>
+                    <p id="number-of-nights">Nights to stay: 0</p>
                 </div>
                 <div class="total-and-book">
-                    <p id="total-price" th:text="'Total: ' + ${price} + '€'"></p>
+                    <p id="total-price">Total: 0€</p>
                     <a href="#" class="btn">Book</a>
                 </div>
             </div>
@@ -58,16 +65,49 @@
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const nightsInput = document.getElementById("number-of-nights");
+            const startDateInput = document.getElementById("start");
+            const endDateInput = document.getElementById("end");
             const totalPriceElement = document.getElementById("total-price");
 
-            const pricePerNight = parseFloat([[${hotel.getPricePerNight()}]]);
+            const pricePerNight = [[${hotel.getPricePerNight().intValue()}]];
 
-            nightsInput.addEventListener("input", function () {
-                const nights = parseInt(nightsInput.value) || 1;
-                const totalPrice = (pricePerNight * nights).toFixed(2);
-                totalPriceElement.textContent = `Total: ${totalPrice}€`;
+            function calculateNightsAndPrice() {
+                const startDate = new Date(startDateInput.value);
+                const endDate = new Date(endDateInput.value);
+
+                if (!isNaN(startDate) && !isNaN(endDate) && endDate > startDate) {
+                    const timeDifference = endDate - startDate;
+                    const nights = Math.ceil(timeDifference / (1000 * 60 * 60 * 24)); // Convert milliseconds to days
+
+                    const nightsDisplay = document.getElementById("number-of-nights");
+                    nightsDisplay.textContent = `Nights to stay: ${nights}`;
+
+                    const totalPrice = (pricePerNight * nights).toFixed(2);
+                    totalPriceElement.textContent = `Total: ${totalPrice}€`;
+                } else {
+                    document.getElementById("number-of-nights").textContent = "Nights to stay: 0";
+                    totalPriceElement.textContent = "Total: 0€";
+                }
+            }
+
+            function updateEndDateMin() {
+                const startDate = startDateInput.value;
+                if (startDate) {
+                    // Set the minimum selectable date for the end date
+                    endDateInput.min = startDate;
+                }
+            }
+
+            // Event listeners
+            startDateInput.addEventListener("change", function () {
+                updateEndDateMin();
+                calculateNightsAndPrice();
             });
+
+            endDateInput.addEventListener("change", calculateNightsAndPrice);
+
+            // Initialize the minimum date for the end date on page load
+            updateEndDateMin();
         });
     </script>
 </main>
