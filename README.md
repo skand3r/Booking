@@ -1,4 +1,4 @@
-# Booking Website Project (still in work)
+# Booking Website Project (Under Development)
 
 This is a Spring project for a booking website where users can search for hotels, view available options, and manage their bookings. Currently, the focus is on hotel bookings, but the project is designed to be extendable to other types of bookings in the future (e.g., plane tickets, concerts, etc.).
 
