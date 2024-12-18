@@ -26,6 +26,7 @@ This is a Spring project for a booking website where users can search for hotels
 - Implement a booking system
 - Create management sections for users to: view, update, cancel their bookings.
 - Allow users to book specific room types in a hotel.
+- Implement ADMIN management for tracking and managing booking status.
 - Extend the project to support other types of bookings (e.g., plane tickets, concert tickets, etc.).
 
 
