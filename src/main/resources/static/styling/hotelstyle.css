@@ -183,7 +183,7 @@ header {
 
 .btn-search-all {
     background-color: #007BFF;
-    /* Different color for the "Search All" button */
+    text-decoration: none;
     color: white;
 }
 
