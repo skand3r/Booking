@@ -35,8 +35,14 @@ public class HotelController {
     }
 
     @GetMapping("/hotel/all")
-    public String getAllHotels(Model model) {
+    public String getAllHotels(Authentication authentication, Model model) {
         model.addAttribute("hotels", hotelService.getAllHotels());
+        if (authentication != null) {
+            model.addAttribute("isAuthenticated", true);
+            model.addAttribute("username", authentication.getName());
+        } else {
+            model.addAttribute("isAuthenticated", false);
+        }
         return "hotelresults";
     }
 
@@ -69,17 +75,31 @@ public class HotelController {
 
 
     @GetMapping("hotel/{id}/book")
-    public String getHotelBookingPage(@PathVariable Long id, Model model) {
+    public String getHotelBookingPage(@PathVariable Long id, Model model, Authentication authentication) {
         Hotel hotel = hotelService.findHotelById(id);
         model.addAttribute("hotel", hotel);
+        // Authentication
+        if (authentication != null) {
+            model.addAttribute("isAuthenticated", true);
+            model.addAttribute("username", authentication.getName());
+        } else {
+            model.addAttribute("isAuthenticated", false);
+        }
         return "hotel-booking-page";
 
     }
     @PostMapping("hotel/{id}/book")
-    public String bookHotel(@PathVariable Long id, @RequestParam int numberOfNights, Model model){
+    public String bookHotel(@PathVariable Long id, @RequestParam int numberOfNights, Model model, Authentication authentication){
         Hotel hotel = hotelService.findHotelById(id);
         double totalPrice = hotelService.calculateTotalPrice(hotel, numberOfNights);
         model.addAttribute("numberOfNights", numberOfNights);
+
+        if (authentication != null) {
+            model.addAttribute("isAuthenticated", true);
+            model.addAttribute("username", authentication.getName());
+        } else {
+            model.addAttribute("isAuthenticated", false);
+        }
         return "hotelresults";
 
     }

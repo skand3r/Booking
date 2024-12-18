@@ -11,7 +11,24 @@
 
 <body>
 <header>
-    <h1>Available Hotels</h1>
+    <div class="logo">
+        <h1>Booking</h1>
+    </div>
+    <nav>
+        <ul class="navbar">
+            <li><a href="/">Home</a></li>
+            <li><a href="hotel">Hotels</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+    </nav>
+    <div class="auth-buttons" th:if="${isAuthenticated}">
+        <span th:text="${username}" class="username"></span>
+        <a href="/logout" class="btn">Logout</a>
+    </div>
+    <div class="auth-buttons" th:if="${!isAuthenticated}">
+        <a href="/login" class="btn">Sign In</a>
+        <a href="/signup" class="btn btn-secondary">Sign Up</a>
+    </div>
 </header>
 <main>
     <div class="hotel-card">
