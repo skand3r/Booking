@@ -46,10 +46,10 @@
                     <div class="dates">
                         <label for="start">Check in: </label>
                         <input type="date" id="start" name="trip-start" value="2024-07-22" min="2024-01-01"
-                               max="2024-12-31"/>
+                               max="2030-12-31"/>
                         <label for="end">Check out: </label>
                         <input type="date" id="end" name="trip-end" value="2024-07-22" min="2024-01-01"
-                               max="2024-12-31"/>
+                               max="2030-12-31"/>
                     </div>
                     <p id="number-of-nights">Nights to stay: 0</p>
                 </div>
@@ -93,7 +93,6 @@
             function updateEndDateMin() {
                 const startDate = startDateInput.value;
                 if (startDate) {
-                    // Set the minimum selectable date for the end date
                     endDateInput.min = startDate;
                 }
             }
@@ -105,8 +104,6 @@
             });
 
             endDateInput.addEventListener("change", calculateNightsAndPrice);
-
-            // Initialize the minimum date for the end date on page load
             updateEndDateMin();
         });
     </script>

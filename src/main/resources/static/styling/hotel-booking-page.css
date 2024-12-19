@@ -161,8 +161,35 @@ main {
 }
 
 .dates {
-    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 15px;
 }
+.dates label {
+    color: #333;
+    font-size: 18px;
+    font-weight: 600;
+}
+input[type="date"] {
+    appearance: none;
+    background: #f8f8f8;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    font-family: "Open Sans", sans-serif;
+    color: #333;
+    width: 115px;
+}
+
+input[type="date"]:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
 
 .nights-block{
     margin-bottom: 20px;
@@ -170,16 +197,23 @@ main {
 
 #number-of-nights {
     font-size: 16px;
+    color: #333;
     text-align: end;
+    margin-bottom: 15px;
 }
 
 .total-and-book{
-    display: flex; /* Use Flexbox for horizontal alignment */
-    flex-direction: row; /* Align items in a row */
-    justify-content: space-between; /* Space between total and button */
-    align-items: center; /* Vertically center items */
-    width: 100%; /* Ensures it spans the full container width */
-    gap: 15px; /* Adds spacing between items */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+#total-price {
+    font-weight: 600;
+    color: #333;
 }
 
 .btn {
