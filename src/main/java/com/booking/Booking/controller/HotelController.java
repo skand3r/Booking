@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
@@ -87,6 +88,8 @@ public class HotelController {
     public String getHotelBookingPage(@PathVariable Long id, Model model, Authentication authentication) {
         Hotel hotel = hotelService.findHotelById(id);
         model.addAttribute("hotel", hotel);
+        String currentDate = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        model.addAttribute("currentDate", currentDate);
         // Authentication
         if (authentication != null) {
             model.addAttribute("isAuthenticated", true);
@@ -106,13 +109,14 @@ public class HotelController {
             model.addAttribute("notSignedInError", "You need to sign in before booking!");
             Hotel hotel = hotelService.findHotelById(id);
             model.addAttribute("hotel", hotel);
-            return "hotel-booking-page"; // Return to the same booking page with the error
+            return "hotel-booking-page";
         }
         else {
             model.addAttribute("isAuthenticated", true);
             int nightsStay = (int) ChronoUnit.DAYS.between(startDate, endDate);
             Hotel hotel = hotelService.findHotelById(id);
             double totalPrice = hotelService.calculateTotalPrice(hotel, nightsStay);
+
             Booking booking = bookingService.createBooking(id, authentication.getName(), startDate, endDate, totalPrice);
 
             model.addAttribute("numberOfNights", nightsStay);
