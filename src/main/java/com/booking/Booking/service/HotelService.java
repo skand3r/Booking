@@ -1,6 +1,7 @@
 package com.booking.Booking.service;
 
 import com.booking.Booking.model.Hotel;
+import com.booking.Booking.model.User;
 import com.booking.Booking.repository.HotelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,14 @@ public class HotelService {
     HotelRepository hotelRepo;
 
     public List<Hotel> getAllHotels() {
-        return hotelRepo.findAll();
+        List<Hotel> hotels = hotelRepo.findAll();
+        for (Hotel hotel : hotels) {
+            // Assuming imageUrl is stored directly in the database
+            if (hotel.getImageUrl() == null || hotel.getImageUrl().isEmpty()) {
+                hotel.setImageUrl("https://ztmibqzflhinqosjjbak.supabase.co/storage/v1/object/sign/hotel-images/BurjViewSuites.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJob3RlbC1pbWFnZXMvQnVyalZpZXdTdWl0ZXMuanBnIiwiaWF0IjoxNzM0NjU4NDM2LCJleHAiOjE4OTIzMzg0MzZ9.505XiRKxdPJoe0rzop_m3weo6r-aL--UBHcp_he-1_Q&t=2024-12-20T01%3A33%3A57.062Z"); // Fallback image
+            }
+        }
+        return hotels;
     }
 
 
@@ -36,7 +44,7 @@ public class HotelService {
 //    }
 
     public Hotel addHotel(Hotel hotel, MultipartFile image) throws IOException {
-        hotel.setImageData(image.getBytes());
+//        hotel.setImageData(image.getBytes());
 
         return hotelRepo.save(hotel);
     }

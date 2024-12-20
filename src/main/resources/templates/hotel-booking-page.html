@@ -32,7 +32,7 @@
 </header>
 <main>
     <div class="hotel-card">
-        <img th:src="@{'/hotel/' + ${hotel.id} + '/image'}" alt="Hotel Image" class="hotel-image">
+        <img th:src="${hotel.imageUrl}" alt="Hotel Image" class="hotel-image">
         <div class="hotel-info">
             <div class="left-items">
                 <div class="hotel-name-location">

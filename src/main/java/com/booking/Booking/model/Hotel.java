@@ -1,6 +1,7 @@
 package com.booking.Booking.model;
 
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
@@ -20,6 +21,6 @@ public class Hotel {
     private String name;
     private String location;
     private Double pricePerNight;
-    @Lob
-    private byte[] imageData;
+    @Column(name = "imageurl", columnDefinition = "TEXT")
+    private String imageUrl;
 }

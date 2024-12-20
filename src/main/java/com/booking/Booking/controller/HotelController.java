@@ -53,14 +53,14 @@ public class HotelController {
         return "hotelresults";
     }
 
-    @GetMapping("/hotel/{id}/image")
-    public ResponseEntity<byte[]> getImageByHotelId(@PathVariable Long id){
-        Hotel hotel = hotelService.findHotelById(id);
-        if (hotel == null || hotel.getImageData() == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(hotel.getImageData(), HttpStatus.OK);
-    }
+//    @GetMapping("/hotel/{id}/image")
+//    public ResponseEntity<byte[]> getImageByHotelId(@PathVariable Long id){
+//        Hotel hotel = hotelService.findHotelById(id);
+//        if (hotel == null || hotel.getImageURL() == null) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//        return new ResponseEntity<>(hotel.getImageData(), HttpStatus.OK);
+//    }
 
     @PostMapping("/hotel/add")
     public ResponseEntity<?> addHotel(@RequestPart Hotel hotel, @RequestPart MultipartFile image, HttpServletRequest request){

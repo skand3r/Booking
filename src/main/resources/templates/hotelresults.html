@@ -35,7 +35,7 @@
     <div class="hotel-list">
         <a th:href="@{'/hotel/' + ${hotel.id} + '/book'}" class="hotel-card-link" th:each="hotel : ${hotels}">
             <div class="hotel-card">
-                <img th:src="@{'/hotel/' + ${hotel.id} + '/image'}" alt="Hotel Image" class="hotel-image">
+                <img th:src="${hotel.imageUrl}" alt="Hotel Image" class="hotel-image">
                 <div class="hotel-info">
                     <div class="left-items">
                         <h3 th:text="${hotel.name}"></h3>
