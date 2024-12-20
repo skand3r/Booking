@@ -1,22 +1,33 @@
 package com.booking.Booking.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.*;
+import org.aspectj.lang.annotation.RequiredTypes;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
 @Data
-@AllArgsConstructor
+@RequiredArgsConstructor
 @NoArgsConstructor
 @Component
+@Entity
 public class Booking {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long userId;
+    @NonNull
+    private Long hotelId;
+    @NonNull
+    private String userUsername;
+    @NonNull
     private LocalDate checkInDate;
+    @NonNull
     private LocalDate checkOutDate;
-    private Long roomId;
+    @NonNull
     private Double totalPrice;
 }

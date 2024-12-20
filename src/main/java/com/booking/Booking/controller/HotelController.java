@@ -1,5 +1,7 @@
 package com.booking.Booking.controller;
 
+import com.booking.Booking.model.Booking;
+import com.booking.Booking.service.BookingService;
 import com.booking.Booking.service.HotelService;
 import com.booking.Booking.model.Hotel;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,14 +16,21 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 @Controller
 public class HotelController {
 
     @Autowired
     HotelService hotelService;
+
+    @Autowired
+    BookingService bookingService;
 
     @GetMapping("/hotel")
     public String hotelMain(Authentication authentication, Model model) {
@@ -89,18 +98,29 @@ public class HotelController {
 
     }
     @PostMapping("hotel/{id}/book")
-    public String bookHotel(@PathVariable Long id, @RequestParam int numberOfNights, Model model, Authentication authentication){
-        Hotel hotel = hotelService.findHotelById(id);
-        double totalPrice = hotelService.calculateTotalPrice(hotel, numberOfNights);
-        model.addAttribute("numberOfNights", numberOfNights);
+    public String bookHotel(@PathVariable Long id, @RequestParam LocalDate startDate, @RequestParam LocalDate endDate , Model model, Authentication authentication){
 
-        if (authentication != null) {
-            model.addAttribute("isAuthenticated", true);
-            model.addAttribute("username", authentication.getName());
-        } else {
+
+        if (authentication == null || !authentication.isAuthenticated() || "anonymousUser".equals(authentication.getPrincipal())) {
             model.addAttribute("isAuthenticated", false);
+            model.addAttribute("notSignedInError", "You need to sign in before booking!");
+            Hotel hotel = hotelService.findHotelById(id);
+            model.addAttribute("hotel", hotel);
+            return "hotel-booking-page"; // Return to the same booking page with the error
         }
-        return "hotelresults";
+        else {
+            model.addAttribute("isAuthenticated", true);
+            int nightsStay = (int) ChronoUnit.DAYS.between(startDate, endDate);
+            Hotel hotel = hotelService.findHotelById(id);
+            double totalPrice = hotelService.calculateTotalPrice(hotel, nightsStay);
+            Booking booking = bookingService.createBooking(id, authentication.getName(), startDate, endDate, totalPrice);
+
+            model.addAttribute("numberOfNights", nightsStay);
+            model.addAttribute("booking", booking);
+
+
+            return "booking-successful";
+        }
 
     }
 

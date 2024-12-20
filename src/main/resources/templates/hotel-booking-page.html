@@ -42,26 +42,35 @@
                 <div th:text="${hotel.getPricePerNight().intValue()} + '€/Night'" class="price-per-night"></div>
             </div>
             <div class="right-items" th:with="price=${hotel.getPricePerNight()}">
-                <div class="nights-block">
-                    <div class="dates">
-                        <label for="start">Check in: </label>
-                        <input type="date" id="start" name="trip-start" value="2024-07-22" min="2024-01-01"
-                               max="2030-12-31"/>
-                        <label for="end">Check out: </label>
-                        <input type="date" id="end" name="trip-end" value="2024-07-22" min="2024-01-01"
-                               max="2030-12-31"/>
+                <form th:action="'/hotel/' + ${hotel.id} + '/book'" method="post" class="book-form">
+                    <div class="nights-block">
+                        <div class="dates">
+                            <label for="start">Check in: </label>
+                            <input type="date" id="start" name="startDate" value="2024-07-22" min="2024-01-01"
+                                   max="2030-12-31"/>
+                            <label for="end">Check out: </label>
+                            <input type="date" id="end" name="endDate" value="2024-07-22" min="2024-01-01"
+                                   max="2030-12-31"/>
+                        </div>
+                        <p id="number-of-nights">Nights to stay: 0</p>
                     </div>
-                    <p id="number-of-nights">Nights to stay: 0</p>
-                </div>
-                <div class="total-and-book">
-                    <p id="total-price">Total: 0€</p>
-                    <a href="#" class="btn">Book</a>
-                </div>
+                    <div class="total-and-book">
+                        <p id="total-price">Total: 0€</p>
+                        <button type="submit" class="btn">Book</button>
+                    </div>
+                </form>
             </div>
+
         </div>
     </div>
     <div class="button-container">
         <a href="/hotel/all" class="btn btn-secondary return-btn">Return</a>
+        <div th:if="${notSignedInError}" class="error-wrapper">
+            <p class="error">
+                &#9888; You need to <a href="/login"> Sign in</a> before booking!
+            </p>
+            <p class="signup-message"> <a href="/signup"> Sign up</a> if you don't have an account</p>
+        </div>
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function () {

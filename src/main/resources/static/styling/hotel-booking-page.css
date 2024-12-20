@@ -236,7 +236,9 @@ input[type="date"]:focus {
 
 .button-container {
     display: flex; /* Flexbox for alignment */
-    justify-content: flex-start; /* Align button to the left */
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
     width: 100%; /* Match the width of the parent container */
     max-width: 1100px; /* Match the width of the card */
     margin: 0 auto; /* Center container if needed */
@@ -244,6 +246,7 @@ input[type="date"]:focus {
 }
 
 .btn.return-btn {
+    justify-self: flex-start;
     padding: 10px 15px;
     font-size: 16px;
     color: white;
@@ -258,6 +261,38 @@ input[type="date"]:focus {
     background-color: white;
     color: #007bff;
     border: 1px solid #007bff;
+}
+
+.error-wrapper {
+    justify-self: flex-end;
+    text-align: center;
+    border: 1px solid red;
+    padding: 5px 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 0, 75, 0.05);
+
+    font-weight: 500;
+}
+
+.error {
+    font-weight: 500;
+    color: red;
+    margin: 5px;
+}
+
+.error a {
+    color: red;
+}
+
+.error-wrapper .signup-message {
+    font-size: 14px;
+    font-weight: 100;
+    color: #555;
+    margin: 5px;
+}
+
+.signup-message a {
+    color: #555;
 }
 
 footer {

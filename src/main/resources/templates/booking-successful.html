@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
+  <link rel="stylesheet" type="text/css" th:href="@{/styling/booking-successful-style.css}">
+</head>
+<body>
+<header>
+  <div class="logo">
+    <h1>Booking</h1>
+  </div>
+  <nav>
+    <ul class="navbar">
+      <li><a href="/">Home</a></li>
+      <li><a href="/hotel">Hotels</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+  </nav>
+  <div class="auth-buttons" th:if="${isAuthenticated}">
+    <span th:text="${username}" class="username"></span>
+    <a href="/logout" class="btn">Logout</a>
+  </div>
+  <div class="auth-buttons" th:if="${!isAuthenticated}">
+    <a href="/login" class="btn">Sign In</a>
+    <a href="/signup" class="btn btn-secondary">Sign Up</a>
+  </div>
+</header>
+<main>
+  <section class="form-section">
+    <img src="/symbols-images/Green-Tick-No-Background.png" alt="Green Tick"/>
+    <h2 class="signup-success-header">Booking successful</h2>
+    <p th:text="'Booking Reference: #' + ${booking.id}" class="booking-id"></p>
+  </section>
+</main>
+</body>
+</html>
