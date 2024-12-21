@@ -174,7 +174,7 @@ header {
 
 .error {
     text-align: center;
-
+    color: red;
     margin-top: 10px;
     border: 1px solid red;
     padding: 10px 20px;
