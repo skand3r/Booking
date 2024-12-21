@@ -57,9 +57,14 @@ public class HotelController {
     }
 
     @GetMapping("/hotel/search/location")
-    public String searchHotelsByLocation(@RequestParam String location, Model model){
-        System.out.println(location);
+    public String searchHotelsByLocation(@RequestParam String location, Model model, Authentication authentication){
         model.addAttribute("hotels", hotelService.searchHotelsByLocation(location));
+        if (authentication != null) {
+            model.addAttribute("isAuthenticated", true);
+            model.addAttribute("username", authentication.getName());
+        } else {
+            model.addAttribute("isAuthenticated", false);
+        }
         return "hotelresults";
     }
 
