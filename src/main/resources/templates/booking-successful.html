@@ -20,9 +20,9 @@
     </ul>
   </nav>
   <div class="auth-buttons" th:if="${isAuthenticated}">
-    <a href="/my-booking" class="my-booking">My Bookings</a>
     <span th:text="${username}" class="username"></span>
-    <a href="/logout" class="btn">Logout</a>
+    <a href="/my-booking" class="btn">My Bookings</a>
+    <a href="/logout" class="btn btn-secondary">Logout</a>
   </div>
   <div class="auth-buttons" th:if="${!isAuthenticated}">
     <a href="/login" class="btn">Login</a>
@@ -34,6 +34,7 @@
     <img src="/symbols-images/Green-Tick-No-Background.png" alt="Green Tick"/>
     <h2 class="signup-success-header">Booking successful</h2>
     <p th:text="'Booking Reference: #' + ${booking.id}" class="booking-id"></p>
+    <p class="booking-forward-message"> You can check your bookings in <a href="/my-booking">My Bookings</a></p>
   </section>
 </main>
 </body>

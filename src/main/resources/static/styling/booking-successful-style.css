@@ -113,6 +113,16 @@ header {
     color: #555;
 }
 
+.booking-forward-message {
+    font-size: 12px;
+    font-weight: 100;
+    color: #555;
+}
+
+.booking-forward-message a {
+    color: #555;
+}
+
 
 
 /* Footer */

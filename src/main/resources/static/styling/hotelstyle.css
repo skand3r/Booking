@@ -11,6 +11,9 @@ body {
     line-height: 1.6;
     background-color: #f9f9f9;
     color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Header Styling */
@@ -77,8 +80,19 @@ header {
     padding-right: 10px;
 }
 
+main {
+    flex: 1;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Hero Section */
 .hero {
+    flex: 1;
+    width: 100%;
     background-image: url(../background-images/hotels-background.jpg);
     background-size: cover;
     background-position: center;
