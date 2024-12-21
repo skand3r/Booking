@@ -47,11 +47,9 @@
                     <div class="nights-block">
                         <div class="dates">
                             <label for="start">Check in: </label>
-                            <input type="date" id="start" name="startDate" value="2024-07-22" min="2024-01-01"
-                                   max="2030-12-31"/>
+                            <input type="date" id="start" name="startDate" max="2030-12-31"/>
                             <label for="end">Check out: </label>
-                            <input type="date" id="end" name="endDate" value="2024-07-22" min="2024-01-01"
-                                   max="2030-12-31"/>
+                            <input type="date" id="end" name="endDate" max="2030-12-31"/>
                         </div>
                         <p id="number-of-nights">Nights to stay: 0</p>
                     </div>
@@ -80,6 +78,29 @@
             const totalPriceElement = document.getElementById("total-price");
 
             const pricePerNight = [[${hotel.getPricePerNight().intValue()}]];
+
+
+
+            function formatDate(date) {
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                return `${year}-${month}-${day}`;
+            }
+
+            // Set initial date values
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(today.getDate() + 1);
+
+            startDateInput.value = formatDate(today);
+            startDateInput.min = formatDate(today);
+
+            endDateInput.value = formatDate(tomorrow);
+            endDateInput.min = formatDate(today);
+
+
+
 
             function calculateNightsAndPrice() {
                 const startDate = new Date(startDateInput.value);
@@ -115,6 +136,7 @@
 
             endDateInput.addEventListener("change", calculateNightsAndPrice);
             updateEndDateMin();
+            calculateNightsAndPrice();
         });
     </script>
 </main>
