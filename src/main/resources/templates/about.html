@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
+    <link rel="stylesheet" type="text/css" th:href="@{/styling/about.css}">
+    <link rel="icon" href="https://ztmibqzflhinqosjjbak.supabase.co/storage/v1/object/sign/images-source/beta_9941429.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMtc291cmNlL2JldGFfOTk0MTQyOS5wbmciLCJpYXQiOjE3MzQ4MTg1NTksImV4cCI6MzMyNzA4MTg1NTl9.VZ1abLXzFGSGJ4A2-Db-P3u578yhgwz8dSsqanXo7qk&t=2024-12-21T22%3A02%3A38.152Z">
+</head>
+
+<body>
+<header>
+    <div class="logo">
+        <h1>Booking</h1>
+    </div>
+    <nav>
+        <ul class="navbar">
+            <li><a href="/">Home</a></li>
+            <li><a href="hotel">Hotels</a></li>
+            <li><a href="about">About</a></li>
+        </ul>
+    </nav>
+    <div class="auth-buttons" th:if="${isAuthenticated}">
+        <span th:text="${username}" class="username"></span>
+        <a href="/my-booking" class="btn">My Bookings</a>
+        <a href="/logout" class="btn  btn-secondary">Logout</a>
+    </div>
+    <div class="auth-buttons" th:if="${!isAuthenticated}">
+        <a href="/login" class="btn">Log in</a>
+        <a href="/signup" class="btn btn-secondary">Sign up</a>
+    </div>
+
+
+</header>
+<main>
+    <div class="container">
+        <div class="header">
+            <h1>About This Project</h1>
+        </div>
+        <div class="description-profile-wrapper">
+        <div class="description">
+            <p>This is a Spring project utilizing the Spring Framework and Spring Boot to develop a booking website. The platform allows users to search for hotels, explore available options, and manage their bookings. While the project is functional, it is a work in progress, with new features being added periodically.
+
+                Currently, the primary focus is on hotel bookings. However, the project is designed with scalability in mind and could be extended to support other types of bookings in the future, such as plane tickets, concerts, and more.
+
+                The project's features, documentation, and source code are available on my GitHub account. You can find the relevant links below.</p>
+            <p class="disclaimer"><span>Note:</span> This project is for educational purposes only.</p>
+        </div>
+        <div class="profile">
+            <img class="profile-picture" src="https://ztmibqzflhinqosjjbak.supabase.co/storage/v1/object/sign/images-source/Professional%20Picture.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMtc291cmNlL1Byb2Zlc3Npb25hbCBQaWN0dXJlLmpwZyIsImlhdCI6MTczNDgxOTg4MiwiZXhwIjoxODkyNDk5ODgyfQ.Hx8CObADIPTph95SFLj_zCw88ZxzblXEODbE6x2ujoQ&t=2024-12-21T22%3A24%3A41.881Z" alt="Profile Picture">
+            <div class="profile-info">
+                <h3>Skander Hamouda</h3>
+                <p class="student">Student at <a href="https://www.htw-berlin.de">HTW Berlin</a></p>
+                <div class="profile-links">
+                    <p><img src="/symbols-images/github.png" style="width: 20px; height: 20px"> <a href="https://github.com/skand3r">GitHub</a></p>
+                    <p> <img src="/symbols-images/linkedin.png" style="width: 20px; height: 20px"> <a href="https://www.linkedin.com/in/skanderhamouda/">LinkedIn</a></p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</main>
+<footer>
+    <p>&copy; 2024 Booking. All rights reserved. | Designed by Skander Hamouda</p>
+</footer>
+</body>
+
+</html>

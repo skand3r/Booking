@@ -48,7 +48,10 @@ public class SecurityConfig {
                         .permitAll()
                 )
                 .logout(logout -> logout
-                        .logoutSuccessUrl("/")
+                        .logoutSuccessHandler(((request, response, authentication) -> {
+                            String referUrl = request.getHeader("Referer");
+                            response.sendRedirect(referUrl != null ? referUrl : "/");
+                        }))
                         .deleteCookies("JSESSIONID")
                         .permitAll()
                 )
