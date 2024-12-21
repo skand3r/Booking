@@ -32,8 +32,8 @@ public class UserController {
             return "signup";
         }
         userService.addUser(new User(username,firstName, lastName, email, password));
-        System.out.println("user added");
-        return "signupsuccessful";
+        model.addAttribute("success" , "Sign up successful. You can login now");
+        return "signup";
     }
 
 

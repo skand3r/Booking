@@ -59,6 +59,9 @@
             <p th:if="${error_2}" style="color: red;" class="error">
                 <span th:text="${error_2}"></span>
             </p>
+            <p th:if="${success}" class="success">
+                <span> Sign up successful ! You can <a href="/login">Log in</a>  now.</span>
+            </p>
         </section>
     </main>
 </body>

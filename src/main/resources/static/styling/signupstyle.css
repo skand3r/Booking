@@ -184,22 +184,21 @@ header {
     font-weight: 500;
 }
 
-#signup-success-header {
+.success {
     text-align: center;
-    /* Center the text */
-    font-size: 1.8rem;
-    /* Increase font size */
-    color: #007BFF;
-    /* Make it the same blue as the header */
-    font-weight: bold;
-    /* Bold text */
-    text-transform: none;
-    /* Capitalize all letters */
-    margin-bottom: 20px;
-    /* Add spacing below the heading */
-    position: relative;
+    color: green; /* Change text color to green */
+    margin-top: 10px;
+    border: 1px solid green; /* Change border color to green */
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: rgba(0, 255, 0, 0.05); /* Light green background */
+
+    font-weight: 500;
 }
 
+.success a {
+    color: green; /* Change text color to green */
+}
 
 
 /* Footer */
