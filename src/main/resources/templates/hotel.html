@@ -23,7 +23,8 @@
         </nav>
         <div class="auth-buttons" th:if="${isAuthenticated}">
             <span th:text="${username}" class="username"></span>
-            <a href="/logout" class="btn">Logout</a>
+            <a href="/my-booking" class="btn">My Bookings</a>
+            <a href="/logout" class="btn  btn-secondary">Logout</a>
         </div>
         <div class="auth-buttons" th:if="${!isAuthenticated}">
             <a href="/login" class="btn">Sign In</a>
