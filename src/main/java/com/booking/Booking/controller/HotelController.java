@@ -116,6 +116,14 @@ public class HotelController {
             model.addAttribute("hotel", hotel);
             return "hotel-booking-page";
         }
+        else if (startDate.equals(endDate)) {
+            model.addAttribute("isAuthenticated", true);
+            model.addAttribute("username", authentication.getName());
+            model.addAttribute("sameDayError", "Invalid Dates!");
+            Hotel hotel = hotelService.findHotelById(id);
+            model.addAttribute("hotel", hotel);
+            return "hotel-booking-page";
+        }
         else {
             model.addAttribute("isAuthenticated", true);
             model.addAttribute("username", authentication.getName());

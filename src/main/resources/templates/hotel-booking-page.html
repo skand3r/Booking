@@ -70,6 +70,11 @@
             </p>
             <p class="signup-message"> <a href="/signup"> Sign up</a> if you don't have an account</p>
         </div>
+        <div th:if="${sameDayError}" class="error-wrapper">
+            <p class="error">
+                &#9888; Invalid Dates
+            </p>
+        </div>
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
