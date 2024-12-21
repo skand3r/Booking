@@ -5,6 +5,7 @@ import com.booking.Booking.model.Room;
 import com.booking.Booking.repository.BookingRepository;
 import com.booking.Booking.repository.HotelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -19,6 +20,10 @@ public class BookingService {
 
     public List<Booking> getAllBookings(){
         return bookingRepo.findAll();
+    }
+
+    public List<Booking> getBookingByUserUsername(String username) {
+        return bookingRepo.findBookingByUserUsername(username);
     }
 
     public Booking createBooking(Long hotelId, String userUsername, LocalDate startDate, LocalDate endDate, double totalPrice){

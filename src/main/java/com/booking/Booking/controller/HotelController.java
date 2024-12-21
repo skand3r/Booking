@@ -118,6 +118,7 @@ public class HotelController {
         }
         else {
             model.addAttribute("isAuthenticated", true);
+            model.addAttribute("username", authentication.getName());
             int nightsStay = (int) ChronoUnit.DAYS.between(startDate, endDate);
             Hotel hotel = hotelService.findHotelById(id);
             double totalPrice = hotelService.calculateTotalPrice(hotel, nightsStay);

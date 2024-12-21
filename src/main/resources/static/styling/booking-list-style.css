@@ -79,32 +79,26 @@ header {
 
 
 .form-section {
+    display: flex;
+    flex-direction: column;
     text-align: center;
     padding: 30px 20px;
-    max-width: 500px;
+    max-width: 700px;
     margin: 10px auto;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-
-.form-section img{
-    display: inline-block;
-    width: 100px;
-    height: 100px;
-}
-.form-section h2 {
-    text-align: center;
-    /* Center the text */
-    font-size: 1.8rem;
-    /* Increase font size */
-    color: #333;
-    /* Make it the same blue as the header */
-    font-weight: bold;
-    margin-bottom: 20px;
-    /* Add spacing below the heading */
-    position: relative;
+.booking-container {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #555;
+    border-radius: 10px;
+    background-color: rgba(147, 144, 144, 0.05);
+    padding: 10px 20px;
+    margin: 5px;
+    justify-content: space-between;
 }
 
 .booking-id {
