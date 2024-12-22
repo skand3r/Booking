@@ -34,6 +34,7 @@
   <section class="form-section">
     <div class="booking-container" th:each="booking : ${bookings}">
       <span class="booking-id" th:text="'#' + ${booking.id}"></span>
+      <span class="booking-date" th:text="${booking.bookingDate}"></span>
       <span class="booking-hotel" th:text="${hotelNames[booking.id]}"></span>
       <span class="booking-check-in" th:text="${booking.checkInDate}"></span>
       <span class="booking-check-out" th:text="${booking.checkOutDate}"></span>

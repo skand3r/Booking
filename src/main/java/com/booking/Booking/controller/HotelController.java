@@ -131,7 +131,7 @@ public class HotelController {
             Hotel hotel = hotelService.findHotelById(id);
             double totalPrice = hotelService.calculateTotalPrice(hotel, nightsStay);
 
-            Booking booking = bookingService.createBooking(id, authentication.getName(), startDate, endDate, totalPrice);
+            Booking booking = bookingService.createBooking(LocalDate.now(), id, authentication.getName(), startDate, endDate, totalPrice);
 
             model.addAttribute("numberOfNights", nightsStay);
             model.addAttribute("booking", booking);

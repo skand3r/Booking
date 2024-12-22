@@ -26,7 +26,7 @@ public class BookingService {
         return bookingRepo.findBookingByUserUsername(username);
     }
 
-    public Booking createBooking(Long hotelId, String userUsername, LocalDate startDate, LocalDate endDate, double totalPrice){
-        return bookingRepo.save(new Booking(hotelId, userUsername, startDate, endDate,totalPrice))        ;
+    public Booking createBooking(LocalDate currentDate, Long hotelId, String userUsername, LocalDate startDate, LocalDate endDate, double totalPrice){
+        return bookingRepo.save(new Booking(currentDate,hotelId, userUsername, startDate, endDate,totalPrice))        ;
     }
 }
