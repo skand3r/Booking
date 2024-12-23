@@ -29,4 +29,8 @@ public class BookingService {
     public Booking createBooking(LocalDate currentDate, Long hotelId, String userUsername, LocalDate startDate, LocalDate endDate, double totalPrice){
         return bookingRepo.save(new Booking(currentDate,hotelId, userUsername, startDate, endDate,totalPrice))        ;
     }
+
+    public void deleteBooking(Long id) {
+        bookingRepo.deleteById(id);
+    }
 }

@@ -46,4 +46,11 @@ public class BookingController {
         return "booking-list";
     }
 
+
+    @PostMapping("/my-booking/{id}/delete")
+    public String deleteBooking(@PathVariable Long id, Authentication authentication, Model model) {
+        bookingService.deleteBooking(id);
+        return getMyBookings(authentication, model);
+    }
+
 }

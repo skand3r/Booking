@@ -40,15 +40,19 @@
         <th class="col-2" scope="col">Check In</th>
         <th class="col-2" scope="col">Check Out</th>
         <th class="col-1" scope="col">Total</th>
+        <th class="col-1" scope="col"></th>
       </tr>
-    <tr class="table-content" th:each="booking : ${bookings}">
+      <form th:action="'/my-booking/' + ${booking.id} + '/delete'" method="POST" th:each="booking : ${bookings}">
+    <tr class="table-content">
       <td class="col-1" scope="row" id="booking-id" th:text="'#' + ${booking.id}"></td>
       <td class="col-2" id="booking-date" th:text="${booking.bookingDate}"></td>
       <td class="col-3" id="booking-hotel" th:text="${hotelNames[booking.id]}"></td>
       <td class="col-2" id="booking-check-in" th:text="${booking.checkInDate}"></td>
       <td class="col-2" id="booking-check-out" th:text="${booking.checkOutDate}"></td>
       <td class="col-1" id="booking-total-price" th:text="${booking.totalPrice} + '€' "></td>
+      <td class="col-1" id="delete"><button class="btn-submit" type="submit"> <svg xmlns="http://www.w3.org/2000/svg" height="27px" viewBox="0 -960 960 960" width="27px" fill="#f51b29"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg> </button></td>
     </tr>
+      </form>
     </table>
   </section>
 </main>
