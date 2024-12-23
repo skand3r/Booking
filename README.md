@@ -19,7 +19,6 @@ The implementation of this project can be seen on this website:
 
 ## Features Yet to Be Done
 
-- Create management sections for users to: update, cancel their bookings.
 - Allow users to book specific room types in a hotel.
 - Implement ADMIN management for tracking and managing booking status.
 - Extend the project to support other types of bookings (e.g., plane tickets, concert tickets, etc.).
