@@ -32,14 +32,24 @@
 </header>
 <main>
   <section class="form-section">
-    <div class="booking-container" th:each="booking : ${bookings}">
-      <span class="booking-id" th:text="'#' + ${booking.id}"></span>
-      <span class="booking-date" th:text="${booking.bookingDate}"></span>
-      <span class="booking-hotel" th:text="${hotelNames[booking.id]}"></span>
-      <span class="booking-check-in" th:text="${booking.checkInDate}"></span>
-      <span class="booking-check-out" th:text="${booking.checkOutDate}"></span>
-      <span class="booking-total-price" th:text="${booking.totalPrice} + '€' "></span>
-    </div>
+    <table class="table">
+      <tr class="table-header" >
+        <th class="col-1" scope="col">Reference</th>
+        <th class="col-2" scope="col">Booking Date</th>
+        <th class="col-3" scope="col">Hotel</th>
+        <th class="col-2" scope="col">Check In</th>
+        <th class="col-2" scope="col">Check Out</th>
+        <th class="col-1" scope="col">Total</th>
+      </tr>
+    <tr class="table-content" th:each="booking : ${bookings}">
+      <td class="col-1" scope="row" id="booking-id" th:text="'#' + ${booking.id}"></td>
+      <td class="col-2" id="booking-date" th:text="${booking.bookingDate}"></td>
+      <td class="col-3" id="booking-hotel" th:text="${hotelNames[booking.id]}"></td>
+      <td class="col-2" id="booking-check-in" th:text="${booking.checkInDate}"></td>
+      <td class="col-2" id="booking-check-out" th:text="${booking.checkOutDate}"></td>
+      <td class="col-1" id="booking-total-price" th:text="${booking.totalPrice} + '€' "></td>
+    </tr>
+    </table>
   </section>
 </main>
 </body>
